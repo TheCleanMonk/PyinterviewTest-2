@@ -25,6 +25,9 @@ def setup():
     driver = webdriver.Chrome("chromedriver.exe")
     driver.get("http://www.xkcd.org")
     return driver
+def exit():
+    driver.close()
+    return driver
 def seleniumTest():
     driver = setup()
     backBtn = driver.find_elements_by_xpath("//*[@id='middleContainer']/ul[1]/li[2]/a")[0]
@@ -39,9 +42,10 @@ def seleniumTest():
     time.sleep(sleepTime)
     thirdArchivedComicText = thirdArchivedComic.text
     assert (pageTitleOfThirdComic == thirdArchivedComicText, "the titles don't match") 
-    exit()
+    exit(driver)
     return "Test Passed and closed without issue"
-def exit():
+def exit(driver):
     driver.close()
     return driver
+    
 seleniumTest()
