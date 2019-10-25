@@ -25,7 +25,7 @@ def setup():
     driver = webdriver.Chrome("chromedriver.exe")
     driver.get("http://www.xkcd.org")
     return driver
-def exit():
+def exit(driver):
     driver.close()
     return driver
 def seleniumTest():
@@ -47,5 +47,5 @@ def seleniumTest():
 def exit(driver):
     driver.close()
     return driver
-    
+
 seleniumTest()
